@@ -1,0 +1,79 @@
+{
+	"name": "testBot",
+	"version": "1.0.0",
+	"description": "",
+	"author": "Maximilian Timofeev <antitim@yandex.ru>",
+
+	"botControl": "./starbot-story-bot",
+	"vk": {
+		"type": "./starbot-vk",
+		"token": "a276d927330d141e46bcc764e36ef08e288fed7dc87237b09ffd25ba39d721a9bc97027bcea5a56248c19",
+		"groupId": 95605859,
+		"confirmCode": "648a635d"
+	},
+
+	"story": {
+		"0": {
+			"text": "Привет дорогой читатель. Я бот. Как тебя зовут?",
+			"attachment": "audio4911710_456239038",
+			"input": [
+				{
+					"type": "goto",
+					"value": "1"
+				},
+				{
+					"type": "set",
+					"key": "name"
+				}
+			]
+		},
+		"1": {
+			"text": "Приятно познакомиться, {{name}}. Выбери вариант: 1 или 2?",
+			"input": [
+				{
+					"type": "goto",
+					"map": {
+						"1": "2",
+						"2": "3"
+					}
+				}
+			]
+		},
+		"2": {
+			"text": "Ты выбрал первый вариант. Отлично. Теперь я телепортирую тебя в случайное место",
+			"input": [
+				{
+					"type": "goto",
+					"random": ["1", "4", "5"]
+				}
+			]
+		},
+		"3": {
+			"text": "Ты выбрал второй вариант. Неплохо. Неплохо",
+			"input": [
+				{
+					"type": "goto",
+					"value": "0"
+				}
+			]
+		},
+		"4": {
+			"text": "Поздравляю, ты в 4 месте",
+			"input": [
+				{
+					"type": "goto",
+					"value": "0"
+				}
+			]
+		},
+		"5": {
+			"text": "Поздравляю, ты в 5 месте",
+			"input": [
+				{
+					"type": "goto",
+					"value": "0"
+				}
+			]
+		}
+	}
+}
