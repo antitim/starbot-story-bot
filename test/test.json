@@ -4,13 +4,8 @@
 	"description": "",
 	"author": "Maximilian Timofeev <antitim@yandex.ru>",
 
-	"botControl": "./starbot-story-bot",
-	"vk": {
-		"type": "./starbot-vk",
-		"token": "a276d927330d141e46bcc764e36ef08e288fed7dc87237b09ffd25ba39d721a9bc97027bcea5a56248c19",
-		"groupId": 95605859,
-		"confirmCode": "648a635d"
-	},
+	"botControl": "starbot-story-bot",
+	"vk": {},
 
 	"story": {
 		"0": {
