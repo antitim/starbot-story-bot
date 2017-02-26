@@ -1,13 +1,13 @@
 {
   "name": "starbot-story-bot",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Story bot for Starbot",
   "author": {
     "name": "antitim",
     "email": "antitim@yandex.ru",
     "url": ""
   },
-  "main": "index.js",
+  "main": "lib/index.js",
   "keywords": [
     "bot"
   ],
