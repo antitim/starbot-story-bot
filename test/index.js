@@ -16,7 +16,7 @@ describe('story-bot', () => {
     answer.text.should.equal('Привет дорогой читатель. Я бот. Как тебя зовут?');
   });
   it('myname', async () => {
-    let answer = await bot('userId', 'Максим');
+    let answer = await bot('userId', '{{Максим}}');
     answer.text.should.equal('Приятно познакомиться, Максим. Выбери вариант: 1 или 2?');
   });
   it('choice', async () => {
