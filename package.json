@@ -1,6 +1,6 @@
 {
   "name": "starbot-story-bot",
-  "version": "1.0.3",
+  "version": "1.1.0",
   "description": "Story bot for Starbot",
   "author": {
     "name": "antitim",
@@ -14,8 +14,15 @@
   "repository": "antitim/starbot-story-bot",
   "scripts": {
     "test": "_mocha",
-    "lint": "eslint lib/*.js"
+    "lint-staged": "lint-staged"
   },
+  "lint-staged": {
+    "test/*.js": "eslint",
+    "index.js": "eslint"
+  },
+  "pre-commit": [
+    "lint-staged"
+  ],
   "license": "MIT",
   "devDependencies": {
     "chai": "^3.5.0",
@@ -23,7 +30,9 @@
     "eslint-config-standard": "^6.2.1",
     "eslint-plugin-promise": "^3.3.0",
     "eslint-plugin-standard": "^2.0.1",
+    "lint-staged": "^3.3.1",
     "mocha": "^3.1.2",
+    "pre-commit": "^1.2.2",
     "starbot-store-object": "^1.0.0"
   },
   "dependencies": {

@@ -5,12 +5,14 @@
 	"author": "Maximilian Timofeev <antitim@yandex.ru>",
 
 	"botControl": "starbot-story-bot",
-	"vk": {},
+
+	"modules": {
+		"damage": "./test/module"
+	},
 
 	"story": {
 		"0": {
 			"text": "Привет дорогой читатель. Я бот. Как тебя зовут?",
-			"attachment": "audio4911710_456239038",
 			"input": [
 				{
 					"type": "goto",
