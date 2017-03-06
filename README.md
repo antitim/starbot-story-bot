@@ -106,8 +106,8 @@ testBot.js
 
 ```json
 {
-  "id1Scene": {}, // 1th Scene
-  "id2Scene": {} // 2nd Scene
+  "id1Scene": {}, /* 1th Scene */
+  "id2Scene": {} /* 2nd Scene */
   ...
 }
 ```
@@ -116,8 +116,8 @@ testBot.js
 
 ```json
 {
-  "text": "Message for user", // The message is processed by the mustache template engine in the context of the user state
-  "input": [{}, {}] // Array of actions (instructions for processing input)
+  "text": "Message for user", /* The message is processed by the mustache template engine in the context of the user state */
+  "input": [{}, {}] /* Array of actions (instructions for processing input) */
 }
 ```
 
@@ -125,13 +125,13 @@ testBot.js
 
 ```json
 {
-  "type": "goto", // Type of the action. Built-in: 'goto' and 'set'
-  "value": "1", // Value
-  "map": { // Map user input to value
+  "type": "goto", /* Type of the action. Built-in: 'goto' and 'set'*/
+  "value": "1", /* Value*/
+  "map": { /* Map user input to value*/
     "1": "2",
     "2": "3"
   },
-  "random": ["1", "4", "5"] // Get random item for value
+  "random": ["1", "4", "5"] /* Get random item for value*/
   ...
 }
 ```
