@@ -12,47 +12,39 @@ $ npm install --save starbot-story-bot
 ## Using
 
 ```js
-const bot = Starbot({
-  ...
-  bot: './testBot'
-  ...
+const StoryBot = require('starbot-story-bot');
+const story = require('./story');
+
+const bot = StoryBot({
+  story,
+  modules: {
+    damage: ({ action, message, state }) => state
+  },
+  unrecognizedText: 'I don`t understand',
 });
 ```
 
-testBot.json
-```js
-  "name": "testBot",
-  "version": "1.0.0",
-  "description": "",
-  "author": "Maximilian Timofeev <antitim@yandex.ru>",
-
-  "botControl": "starbot-story-bot",
-
-  // Additional action modules
-  "modules": {
-    "damage": "./test/module"
-  },
-
-  // The story of the bot.
-  "story": {
+story.json
+```json
+  {
     "0": {
       "text": "Hello. What is your name?",
-      "input": [
+      "actions": [
         {
-          "type": "goto",
-          "value": "1"
+          "name": "goto",
+          "position": "1"
         },
         {
-          "type": "set",
+          "name": "set",
           "key": "name"
         }
       ]
     },
     "1": {
       "text": "Nice to meet you, {{name}}. Choose option 1 or 2?",
-      "input": [
+      "actions": [
         {
-          "type": "goto",
+          "name": "goto",
           "map": {
             "1": "2",
             "2": "3"
@@ -62,44 +54,41 @@ testBot.json
     },
     "2": {
       "text": "You chose the first option. Great. Now I'm going to bring you to a random location",
-      "input": [
+      "actions": [
         {
-          "type": "goto",
+          "name": "goto",
           "random": ["1", "4", "5"]
         }
       ]
     },
     "3": {
       "text": "You chose the second option. Well. Well",
-      "input": [
+      "actions": [
         {
-          "type": "goto",
-          "value": "0"
+          "name": "goto",
+          "position": "0"
         }
       ]
     },
     "4": {
       "text": "Congratulations, you're in 4th place",
-      "input": [
+      "actions": [
         {
-          "type": "goto",
-          "value": "0"
+          "name": "goto",
+          "position": "0"
         }
       ]
     },
     "5": {
       "text": "Congratulations, you're in 5th place",
-      "input": [
+      "actions": [
         {
-          "type": "goto",
-          "value": "0"
+          "name": "goto",
+          "position": "0"
         }
       ]
     }
   },
-
-  // The message, if the bot does not understand the input 
-  "unrecognized": "I don`t understand"
 ```
 
 ### Story
@@ -121,7 +110,7 @@ testBot.json
   // The message is processed by the mustache template engine in the context of the user state
   "text": "Message for user",
   // Array of actions (instructions for processing input)
-  "input": [{}, {}]
+  "actions": [{}, {}]
 }
 ```
 
@@ -129,17 +118,8 @@ testBot.json
 
 ```js
 {
-  // Type of the action. Built-in: 'goto' and 'set'
-  "type": "goto",
-  // Value
-  "value": "1",
-  // Map user input to value
-  "map": {
-    "1": "2",
-    "2": "3"
-  },
-  // Get random item for value
-  "random": ["1", "4", "5"]
+  // Name of the action. Built-in: 'goto' and 'set'
+  "name": "goto",
   ...
 }
 ```
@@ -147,12 +127,13 @@ testBot.json
 ## Build-in action
 ### goto
 
-Change user position to ```value```. The position of the user corresponds to the ID of the scene.
+Change user position to ```position```. The position of the user corresponds to the ID of the scene.
 
 ```json
 {
-  "type": "goto",
-  "value": "room7"
+  "name": "goto",
+  "position": "room7",
+  "notFoundText": "Sorry, not found.."
 }
 ```
 
@@ -162,9 +143,10 @@ Sets the ```value``` field ```key``` user state
 
 ```json
 {
-  "type": "set",
+  "name": "set",
+  "key": "someField",
   "value": "some value",
-  "key": "someField"
+  "notFoundText": "Sorry, not found.."
 }
 ```
 ## Custom action
@@ -180,7 +162,7 @@ Blank module:
  *
  * @returns {any} New state of the user
  */
-module.exports = function (state, value, message, action) {
+module.exports = function ({ action, message, state }) {
   return state;
 };
 ```
