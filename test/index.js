@@ -1,5 +1,3 @@
-'use strict';
-
 require('chai').should();
 const story = require('./story');
 const StoryBot = require('../lib');
