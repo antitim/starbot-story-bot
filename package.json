@@ -1,11 +1,10 @@
 {
   "name": "starbot-story-bot",
-  "version": "1.1.2",
+  "version": "2.0.0",
   "description": "Story bot for Starbot",
   "author": {
     "name": "antitim",
-    "email": "antitim@yandex.ru",
-    "url": ""
+    "email": "antitim@yandex.ru"
   },
   "main": "lib/index.js",
   "keywords": [
@@ -33,7 +32,7 @@
     "lint-staged": "^3.3.1",
     "mocha": "^3.1.2",
     "pre-commit": "^1.2.2",
-    "starbot-store-object": "^1.0.0"
+    "starbot-store-object": "^2.1.0"
   },
   "dependencies": {
     "mustache": "^2.3.0"
